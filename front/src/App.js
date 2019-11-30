@@ -6,7 +6,7 @@ import CreateAudi from './component/CreateAudi'
 import Game from './component/game'
 import Login from './component/login'
 import Register from './component/Register'
-
+import Can from './component/canvas/can'
 class App extends  React.Component{
     constructor(props){
       super(props)
@@ -37,16 +37,20 @@ class App extends  React.Component{
          <Link to="/login" className="col-xl-2">Login</Link>
          <Link to ="/Register" className="col-xl-2">Register</Link>
          <Link className="text-white col-xl-1">{this.state.name}</Link>
+         
          {this.state.flag ?( <button className="btn text-danger col-xl-2" onClick={()=>this.logout()}>Logout</button>):('')}
         
         </div>
         </nav>
-        <div>
+        <Can/>
+        <div style={{marginTop:"-600px"}}>
+        
       <Route path="/Register" exact component={Register}/>    
       <Route path="/login" exact render={()=><Login  set={(val)=>this.setname(val)}/>} />    
       <Route path="/" exact component={Main} />
       <Route path="/audi" exact component={CreateAudi} />
       <Route path="/games/:id" exact component={Game} />
+      
         </div>
     </Router>
     
