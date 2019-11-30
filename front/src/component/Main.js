@@ -1,6 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
 import {Link} from "react-router-dom"
+import Can from '../component/canvas/can'
 
 class Main extends React.Component{
     constructor(props){
@@ -36,7 +37,9 @@ class Main extends React.Component{
                     <div className="col-xl-3">Location</div>
                     <div className="col-xl-3 ml-4">Thumbnail</div>
                 </div>
+                
                 <div>{a}</div>
+               
             </div>
         )
     }
