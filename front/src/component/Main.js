@@ -5,23 +5,31 @@ class Main extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            
+            list:[]
         }
     }
     componentDidMount(){
         Axios({
-            method:"post",
-            url:""
+            method:"get",
+            url:"http://127.0.0.1:5000/list"
 
         })
-        .then(resp => console.log(resp))
+        .then(resp =>
+            this.setState({
+                list:resp.data.list
+            }))
         .catch(err => console.log(err))
     }
     render(){
+       let a= this.state.list.map(a=>{
+        return <div className="row col-xl-8 border" >
+                <div className="col-xl-3">{a.audiname}</div>
+                 <div className="col-xl-3"></div>
+        </div>
+       })
         return(
-            <div>
-                <div ></div>
-                <div></div>
+            <div className="container">
+                <div>{a}</div>
             </div>
         )
     }

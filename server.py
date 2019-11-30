@@ -42,7 +42,9 @@ def generate_salt():
 
 @app.route("/list")
 def show():
-    
+    read_file()
+    return json.dumps({"list":games})
+
 @app.route("/create",methods = ["POST"])
 def gamesplace():
     try:
