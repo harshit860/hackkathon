@@ -49,10 +49,10 @@ def show():
 def gamesplace():
     try:
         with open('audi.csv') as readfile:
-            fieldnames = ['id','audiname']
+            fieldnames = ['id','audiname','img','location']
     except FileNotFoundError:
         with open("audi.csv",'w') as writefile:
-            fieldnames = ['id','audiname']
+            fieldnames = ['id','audiname','img','location']
             writer = csv.DictWriter(writefile,fieldnames = fieldnames)
             writer.writeheader()
     with open("audi.csv","a") as writefile:
@@ -61,7 +61,9 @@ def gamesplace():
             writer.writeheader()
         id = str(uuid.uuid4())
         audiname = request.json["audiname"]
-        writer.writerow({"id":id,"audiname":audiname})
+        img = request.json['img']
+        location = request.json['location']
+        writer.writerow({"id":id,"audiname":audiname,'img':img,'location':location})
     return "success"
 
 

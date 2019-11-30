@@ -24,11 +24,17 @@ class Main extends React.Component{
        let a= this.state.list.map(a=>{
         return <div className="row col-xl-8 border" >
                 <div className="col-xl-3">{a.audiname}</div>
-                 <div className="col-xl-3"></div>
+                 <div className="col-xl-3">{a.location}</div>
+                <div className="col-xl-3"><img className="col-xl-12" src={a.img}></img></div>
         </div>
        })
         return(
             <div className="container">
+                <div className="row col-xl-8">
+                    <div className="col-xl-3">Playground Name</div>
+                    <div className="col-xl-3">Location</div>
+                    <div className="col-xl-3 ml-4">Thumbnail</div>
+                </div>
                 <div>{a}</div>
             </div>
         )
