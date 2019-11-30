@@ -23,7 +23,7 @@ class Main extends React.Component{
     }
     render(){
        let a= this.state.list.map(a=>{
-        return <Link to="/games" ><div className="row col-xl-8 shadow-lg mt-3" >
+        return <Link to={`/games/${a.audiname}`} ><div className="row col-xl-8 shadow-lg mt-3" >
                 <div className="col-xl-3">{a.audiname}</div>
                  <div className="col-xl-3">{a.location}</div>
                 <div className="col-xl-3"><img className="col-xl-12" src={a.img}></img></div>

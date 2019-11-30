@@ -66,9 +66,13 @@ def gamesplace():
         writer.writerow({"id":id,"audiname":audiname,'img':img,'location':location})
     return "success"
 
-@app.route('/gamelist')
+@app.route('/gamelist',methods =['post'])
 def gamelist():
     read_file()
+    audi = request.json['audi_name']
+    for i in games_2:
+        if i['audiname'] == audi:
+            print(i)
     return json.dumps({"games":games_2})
 
 
@@ -139,7 +143,7 @@ def login():
         if i['email'] == email:
             if i["password_hash"] == password_hash:         
                 response.set_cookie(i["id"])
-                return i["id"]
+                return i
         else:
             print("wrong")
 

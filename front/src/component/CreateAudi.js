@@ -20,7 +20,8 @@ class CreatAudi extends React.Component{
             url:"http://127.0.0.1:5000/create",
             data:{
                 audiname:this.state.audi,
-                img:this.state.img
+                img:this.state.img,
+                location:this.state.location
             }
 
         })
@@ -28,6 +29,7 @@ class CreatAudi extends React.Component{
         .catch(err => console.log(err))
     }
     render(){
+        
         return(
             <div className="container">
                 <div className="row col-xl-12 mt-4">
@@ -38,7 +40,11 @@ class CreatAudi extends React.Component{
                     <label>Enter Stadium or Auditoriam Image</label>
                     <input name="img"  onChange={(e)=>this.handleChange(e)}></input>
                 </div>
-                <button className="mt-3 btn btn-dark" onClick={()=>this.add()}>Add Place</button>
+                <div className="row col-xl-12 mt-4">
+                <label>Location</label>
+                    <input name="location" className="mt-2" onChange={(e)=>this.handleChange(e)}></input>
+                </div>
+                <button className="mt-3 ml-2 btn btn-dark" onClick={()=>this.add()}>Add Place</button>
             </div>
         )
     }

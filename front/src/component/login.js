@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 class Login extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             email:"",
             password:"",
@@ -23,7 +23,9 @@ class Login extends React.Component{
             password:this.state.password
         }
         axios.post('http://127.0.0.1:5000/login',userData)
-        .then(res=>{console.log(res)
+        .then(res=>{
+            
+            this.props.set(res.data.name)
             this.setState({
                 result:res.data
             })
@@ -34,7 +36,7 @@ class Login extends React.Component{
         })
     }
     render(){
-        console.log(this.state)
+        console.log(this.props)
         return(
            <div className="m-5"> 
             <form className="col-4 border border-primary">
