@@ -40,6 +40,9 @@ def generate_salt():
     salt = os.urandom(16)
     return salt.hex()
 
+@app.route("/list")
+def show():
+    
 @app.route("/create",methods = ["POST"])
 def gamesplace():
     try:
