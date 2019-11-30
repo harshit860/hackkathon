@@ -66,6 +66,11 @@ def gamesplace():
         writer.writerow({"id":id,"audiname":audiname,'img':img,'location':location})
     return "success"
 
+@app.route('/gamelist')
+def gamelist():
+    read_file()
+    return json.dumps({"games":games_2})
+
 
 @app.route("/gameadd",methods = ["POST"])
 def games1():

@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import {Link} from "react-router-dom"
 
 class Main extends React.Component{
     constructor(props){
@@ -22,11 +23,11 @@ class Main extends React.Component{
     }
     render(){
        let a= this.state.list.map(a=>{
-        return <div className="row col-xl-8 border" >
+        return <Link to="/games" ><div className="row col-xl-8 border" >
                 <div className="col-xl-3">{a.audiname}</div>
                  <div className="col-xl-3">{a.location}</div>
                 <div className="col-xl-3"><img className="col-xl-12" src={a.img}></img></div>
-        </div>
+        </div></Link>
        })
         return(
             <div className="container">
