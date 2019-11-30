@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Webcam from "react-webcam"
+import WebcamCapture from './webc';
 
 
 class Login extends React.Component{
@@ -16,6 +18,10 @@ class Login extends React.Component{
             [e.target.name]:e.target.value
         })
     }
+    capture = () => {
+        const imageSrc = this.webcam.getScreenshot();
+        console.log(imageSrc)
+      };
     handleClick=(e)=>{
         e.preventDefault()
         let userData ={
@@ -36,7 +42,7 @@ class Login extends React.Component{
         })
     }
     render(){
-        console.log(this.props)
+        console.log()
         return(
            <div className="m-5"> 
             <form className="col-4 border border-primary">
@@ -55,6 +61,7 @@ class Login extends React.Component{
                 </div> */}
                 <button type="submit" class="btn btn-primary" onClick={this.handleClick}>Login</button>
             </form>
+                <WebcamCapture imggg={(v)=>this.props.imgg(v)} />                        
               <h3>{this.state.result.status}</h3>
               </div>
         )

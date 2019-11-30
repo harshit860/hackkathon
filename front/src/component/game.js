@@ -24,14 +24,36 @@ class Game extends React.Component{
         )
         .catch(err => console.log(err))
     }
+
+    book(game1){
+        console.log(game1)
+        Axios({
+            method: "post",
+            url: "http://127.0.0.1:5000/gamecount",
+            data: {
+                game:game1
+            }
+        })
+            .then(resp => {
+               console.log(resp)
+            }
+            )
+            .catch(err => console.log(err))
+    }
+
+    
     render(){
+        console.log(this.state)
      let disp = this.state.games1.map(a=>{
-         return <div className="row">
-             <h4>{a.audiname}</h4>
+         return <div className="row container mt-2 card-body shadow-lg">
+             <h5 className="col-xl-2">{a.audiname}</h5>
+             <h5 className="col-xl-2">{a.game}</h5>
+             <h5 className="col-xl-2">{a.count}</h5>
+             <button className="btn btn-warning" onClick={()=>this.book(a.game)}>Book Slot</button>
          </div>
      })
         return (
-            <div></div>
+            <div className="container">{disp}</div>
         )
     }
 }

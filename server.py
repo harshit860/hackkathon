@@ -153,17 +153,24 @@ def gamescount():
     gam  = request.json['game']
     # print(games_2)
     ar1 = list()
+    with open("game.csv",'w') as writefile:
+        fieldnames = ['id','game_id','audiname','game','count']
+        writer = csv.DictWriter(writefile,fieldnames = fieldnames)
+        writer.writeheader()
     for i in games_2:
         if i["game"] == gam:
             num3 = int(i["count"])
             cnt = num3 + 1
             ar1.append({"id":i["id"],"audiname":i["audiname"],"game_id":i["game_id"],"game":i["game"],"count":cnt})
+            print({"id":i["id"],"audiname":i["audiname"],"game_id":i["game_id"],"game":i["game"],"count":cnt})
+            writer.writerow({"id":i["id"],"audiname":i["audiname"],"game_id":i["game_id"],"game":i["game"],"count":cnt})
         else:
             ar1.append(i)
-    # print(ar1)
-    with open("game.csv","a") as writefile:
-        writer = csv.DictWriter(writefile)
-        for i in ar1:
-            print(i)
             writer.writerow(i)
+    # print(ar1)
+    # with open("game.csv","a") as writefile:
+    #     writer = csv.DictWriter(writefile)
+    #     for i in ar1:
+    #         print(i)
+    #         writer.writerow(i)
     return "done"

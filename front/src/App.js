@@ -12,38 +12,53 @@ class App extends  React.Component{
       super(props)
       this.state={
             name:'',
-            flag:false
+            flag:false,
+            img1:''
       }
     }
     setname(username){
       this.setState({
-            name:username
+            name:username,
+            flag:true,
     //   })
+    })
+  }
+  setimage(value){
+    this.setState({
+      img1:value
     })
   }
   logout(){
     this.setState({
-      name:null
+      name:null,
+      flag:false
     })
   }
+componentDidMount() {
+
+    console.log(navigator)
+
+}
+
     render(){
       console.log(this.state)
   return (
     <Router>
       <nav class="navbar navbar-dark bg-dark ">
-        <div className="App row justify-content-around">
+        <div className="App row justify-content-around  col-xl-12">
          <Link to="/" className="col-xl-2" >Home</Link>
          <Link to="/audi" className="col-xl-4">Add Place</Link>
          <Link to="/login" className="col-xl-2">Login</Link>
          <Link to ="/Register" className="col-xl-2">Register</Link>
          <Link className="text-white col-xl-1">{this.state.name}</Link>
-         {this.state.flag ?( <button className="btn text-danger col-xl-2" onClick={()=>this.logout()}>Logout</button>):('')}
+         <img className=" rounded-circle" height="80px" width="80px" src={this.state.img1} ></img>
+         {this.state.flag ?( <button className="btn text-danger col-xl-1" onClick={()=>this.logout()}>Logout</button>):('')}
         
         </div>
         </nav>
         <div>
       <Route path="/Register" exact component={Register}/>    
-      <Route path="/login" exact render={()=><Login  set={(val)=>this.setname(val)}/>} />    
+      <Route path="/login" exact render={()=><Login  imgg={(val)=>this.setimage(val)} set={(val)=>this.setname(val)}/>} />    
       <Route path="/" exact component={Main} />
       <Route path="/audi" exact component={CreateAudi} />
       <Route path="/games/:id" exact component={Game} />
